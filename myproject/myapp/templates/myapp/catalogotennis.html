@@ -50,10 +50,10 @@
               <a class="nav-link" href="{% url 'catalogotennis' %}">Tenis</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'futbol' %}">Futbol</a>
+              <a class="nav-link" href="{% url 'catalogofutbol' %}">Futbol</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'gym' %}">Gimnasio</a>
+              <a class="nav-link" href="{% url 'catalogogym' %}">Gimnasio</a>
             </li>
             <li class="nav-item">
               <div class="btn-IniciarSesion-index">
@@ -116,19 +116,22 @@
   <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
       <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+        {% if productos %}
+        {% for x in productos %}
         <div class="col mb-5">
           <div class="card h-100">
             <!-- Product image-->
-            <img class="card-img-top" src="{{ producto.url_imagen }}" alt="..." />
+            <img class="card-img-top" src="{{x.url_imagen}}" alt="..." />
             <!-- Product details-->
             <div class="card-body p-4">
               <div class="text-center">
                 <!-- Product name-->
-                <h5 class="fw-bolder"></h5>
+                <h5 class="fw-bolder"> {{x.nombre_producto}}</h5>
                 <!-- Description-->
-                <p class="card-text text-justify mb-3"></p>
+                <p class="card-text text-justify mb-3">{{x.descripcion}}</p>
                 <!-- Product price-->
-                <p class="card-text text-justify mb-3">$$  CLP</p>
+                <p class="card-text text-justify mb-3">$ {{x.precio}} CLP</p>
               </div>
             </div>
             <!-- Product actions-->
@@ -137,6 +140,9 @@
             </div>
           </div>
         </div>
+        {% endfor %}
+        {% endif %}
+
       </div>
     </div>
   </section>

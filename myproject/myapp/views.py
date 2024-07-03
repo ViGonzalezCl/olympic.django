@@ -5,24 +5,12 @@ from .models import Producto, Categoria
 # Create your views here.
 def index(request):
     return render(request, 'myapp/index.html')
-def catalogofutbolbalones(request):
-    return render(request, 'myapp/catalogofutbolbalones.html')
-def catalogofutbolimplementos(request):
-    return render(request, 'myapp/catalogofutbolimplementos.html')
-def catalogofutbolropa(request):
-    return render(request, 'myapp/catalogofutbolropa.html')
-def catalogogymaccesorios(request):
-    return render(request, 'myapp/catalogogymaccesorios.html')
-def catalogogymhombre(request):
-    return render(request, 'myapp/catalogogymhombre.html')
-def catalogogymmujer(request):
-    return render(request, 'myapp/catalogogymmujer.html')
-def catalogotennis(request):
-    return render(request, 'myapp/catalogotennis.html')
-def catalogotennismujer(request):
-    return render(request, 'myapp/catalogotennismujer.html')
-def catalogotennisraqueta(request):
-    return render(request, 'myapp/catalogotennisraqueta.html')
+#def catalogofutbol(request):
+    #return render(request, 'myapp/catalogofutbol.html')
+#def catalogogym(request):
+    #return render(request, 'myapp/catalogogym.html')
+#def catalogotennis(request):
+    #return render(request, 'myapp/catalogotennis.html')
 def contacto(request):
     return render(request, 'myapp/contacto.html')
 def crearCuenta(request):
@@ -37,3 +25,24 @@ def sucursales(request):
     return render(request, 'myapp/sucursales.html')
 def carro(request):
     return render(request, 'myapp/carro.html')
+
+
+#######LISTAR CATALOGOS
+
+def catalogotennis(request):
+    productos= Producto.objects.raw("select * from myapp_producto where idCategoria = 4")
+    context={"productos":productos}
+
+    return render(request, 'myapp/catalogotennis.html', context)
+
+def catalogogym(request):
+    productos= Producto.objects.raw("select * from myapp_producto where idCategoria = 5")
+    context={"productos":productos}
+
+    return render(request, 'myapp/catalogogym.html', context)
+
+def catalogofutbol(request):
+    productos= Producto.objects.raw("select * from myapp_producto where idCategoria = 1")
+    context={"productos":productos}
+
+    return render(request, 'myapp/catalogofutbol.html', context)
