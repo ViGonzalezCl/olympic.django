@@ -7,9 +7,9 @@ urlpatterns = [
     path('catalogofutbolimplementos/', views.catalogofutbolimplementos, name='catalogofutbolimplementos'),
     path('catalogofutbolropa/', views.catalogofutbolropa, name='catalogofutbolropa'),
     path('catalogogymaccesorios/', views.catalogogymaccesorios, name='catalogogymaccesorios'),
-    path('catalagogymhombre/', views.catalagogymhombre, name='catalogogymhombre'),
+    path('catalogogymhombre/', views.catalogogymhombre, name='catalogogymhombre'),
     path('catalogogymmujer/', views.catalogogymmujer, name='catalogogymmujer'),
-    path('catalogotennishombre/', views.catalogotennishombre, name='catalogotennishombre'),
+    path('catalogotennis/', views.catalogotennis, name='catalogotennis'),
     path('catalogotennismujer/', views.catalogotennismujer, name='catalogotennismujer'),
     path('catalogotennisraqueta/', views.catalogotennisraqueta, name='catalogotennisraqueta'),
     path('contacto/', views.contacto, name='contacto'),
@@ -18,6 +18,5 @@ urlpatterns = [
     path('gym/', views.gym, name='gym'),
     path('nosotros/', views.nosotros, name='nosotros'),
     path('sucursales/', views.sucursales, name='sucursales'),
-    path('tennis/', views.tennis, name='tennis'),
-]
-
+    path('carro', views.carro, name="carro"),
+    ]

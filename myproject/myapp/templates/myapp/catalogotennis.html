@@ -3,22 +3,22 @@
 <html lang="spa">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sucursales</title>
+  <!--Metadatos-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tennis | Hombre</title>
+  <!--Bootstrap-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
-    <!--cambios para el css-->
-    <link rel="stylesheet" href="{% static 'myapp/css/estilos.css' %}">
+  <!--CSS-->
+  <link rel="stylesheet" href="{% static 'myapp/css/estilos.css' %}">
+
 </head>
 
 <body>
 
-
-
-  <div class="menu-superior" >
-    <nav class="navbar navbar-expand-md bg-body-tertiary" >
+  <div class="menu-superior">
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
       <div class="container-fluid" id="navbar">
 
         <!--boton patalla chica-->
@@ -47,7 +47,7 @@
         <div class="collapse navbar-collapse order-4 order-md-4" id="navbar-right">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'tennis' %}">Tenis</a>
+              <a class="nav-link" href="{% url 'catalogotennis' %}">Tenis</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'futbol' %}">Futbol</a>
@@ -112,43 +112,36 @@
   </div>
   <!--fin nav superior-->
 
-  <div class="row row-cols-3 row-cols-md-3 g-3 mt-5 ms-5 me-5 justify-content-center">
+  <!-- Section-->
+  <section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+      <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div class="col mb-5">
+          <div class="card h-100">
+            <!-- Product image-->
+            <img class="card-img-top" src="{{ producto.url_imagen }}" alt="..." />
+            <!-- Product details-->
+            <div class="card-body p-4">
+              <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder"></h5>
+                <!-- Description-->
+                <p class="card-text text-justify mb-3"></p>
+                <!-- Product price-->
+                <p class="card-text text-justify mb-3">$$  CLP</p>
+              </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+              <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to Cart</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <div class="col-mb-3">
-      <div class="card me-2">
-        <a href="{% url 'catalogotennishombre' %}">
-          <img src="https://i.ibb.co/VY7kSmx/camisetahombre.png" class="card-img-top" alt="...">
-        </a>
-        <div class="card-body">
-          <h5 class="card-title">Vestimenta Hombre</h5>
-          <p class="card-text">Escoge tu armadura.</p>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-mb-3">
-      <div class="card">
-        <a href="{% url 'catalogotennisraqueta' %}">
-          <img src="https://i.ibb.co/RCcr2Kk/raqueta.png" class="card-img-top" alt="...">
-        </a>
-        <div class="card-body pb-2">
-          <h5 class="card-title">Raquetas</h5>
-          <p class="card-text">Elige tu arma y triunfa.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-mb-3">
-      <div class="card ms-2 ">
-        <a href="{% url 'catalogotennismujer' %}">
-          <img src="https://i.ibb.co/9svsNLg/vestuariomujer.png" class="card-img-top" alt="...">
-        </a>
-        <div class="card-body">
-          <h5 class="card-title">Vestimenta Mujer</h5>
-          <p class="card-text">Estilo y comodidad.</p>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="container">
     <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
       <div class="col mb-3">
@@ -167,27 +160,25 @@
       <div class="col mb-3">
         <h5>Nosotros</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="{% url 'index' %}" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="{% url 'nosotros' %}" class="nav-link p-0 text-muted">¿Quiénes Sómos?</a></li>
-          <li class="nav-item mb-2"><a href="{% url 'sucursales' %}" class="nav-link p-0 text-muted">Nuestras Tiendas</a></li>
+          <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-muted">Home</a></li>
+          <li class="nav-item mb-2"><a href="nosotros.html" class="nav-link p-0 text-muted">¿Quiénes Sómos?</a></li>
+          <li class="nav-item mb-2"><a href="sucursales.html" class="nav-link p-0 text-muted">Nuestras Tiendas</a></li>
         </ul>
       </div>
 
       <div class="col mb-3">
         <h5>Atención Cliente</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="{% url 'contacto' %}" class="nav-link p-0 text-muted">Contáctanos</a></li>
+          <li class="nav-item mb-2"><a href="contacto.html" class="nav-link p-0 text-muted">Contáctanos</a></li>
         </ul>
       </div>
 
 
       <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
         integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
-
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
-
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
@@ -197,7 +188,6 @@
         crossorigin="anonymous"></script>
       <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
       <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
 
       <script src="{% static 'myapp/js/validacion.js' %}"></script>
       <script src="{% static 'myapp/js/boton.js' %}"></script>
