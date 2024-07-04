@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Categoria(models.Model):
-    id_categoria = models.AutoField(db_column='idCategoria', primary_key=True)
+    id_categoria = models.AutoField(db_column='id_categoria', primary_key=True)
     categoria = models.CharField(max_length=50, blank=False, null=False)
 
     def __str__(self):
@@ -17,7 +17,7 @@ class Producto(models.Model):
     nombre_producto = models.CharField(max_length=100)
     precio = models.IntegerField()
     descripcion = models.TextField()
-    id_categoria = models.ForeignKey('Categoria',on_delete=models.CASCADE, db_column='idCategoria')
+    id_categoria = models.ForeignKey('Categoria',on_delete=models.CASCADE, db_column='id_categoria')
 
     def __str__(self):
         return str(self.nombre_producto)

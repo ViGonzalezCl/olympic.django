@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar</title>
+</head>
+
+<body>
+    <h1>Editar datos de Productos</h1><br>
+
+    <button type="button">
+        <a href="{% url 'productosAdd' %}">Agregar</a>
+    </button>
+
+    <hr class="my-4">
+
+    <div id="mensaje">
+        {% if mensaje %}
+        {{ mensaje }}
+        {% endif %}
+    </div>
+
+    <table>
+        {% if productos %}
+        <tr>
+            <th>ID</th>
+            <th>Categoria</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Descripcion</th>
+            <th>Eliminar</th>
+            <th>Editar</th>
+        </tr>
+        {% for x in productos %}
+        <tr>
+            <td>{{ x.id }}</td>
+            <td>{{ x.categoria }}</td>
+            <td>{{ x.nombre_producto }}</td>
+            <td>{{ x.precio }}</td>
+            <td>{{ x.descripcion }}</td>
+            <td><a href="{% url 'productos_del' pk=x.id %}">Eliminar</a></td>
+            <td><a href="{% url 'productos_findEdit' pk=x.id %}">Editar</a></td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
+
+    <hr class="my-4">
+   
+    <button type="button">
+        <a href="{% url 'index' %}">Volver</a>
+    </button>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('#mensaje').delay(3000).fadeOut('slow');
+        });
+    </script>
+
+</body>
+
+</html>
