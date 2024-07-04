@@ -8,27 +8,22 @@
 </head>
 <body>
    <div style="text-align: center;">
-        <h2>Formulario CRUD para productos</h2><br>
-        <form action="productosAdd" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <pre>Nombre:                <input type="text" name="nombre_producto"></pre>
-            <pre>Precio:                <input type="number" name="precio" required></pre>
-            <pre>Descripcion:           <input type="text" name="descripcion"></pre>
-            <pre>URL Imagen:            <input type="url" name="imagen"></pre>
-            <pre>Categoria:                <select name="categoria">
-                {% for x in categorias %}
-                    <option value="{{x.id_categoria}}">{{x.categoria}}</option>
-                {% endfor %}
-            </select></pre>
-            <input type="submit" name="opcion" value="Agregar">
-        </form><br>
-        <a href="{% url 'crud' %}">Volver</a><br>
+        <h2>Agregar Productos</h2><br>
 
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_ul }}
+            <input type="submit" value="Agregar">
+        </form>
+        <br>
         <div id="mensaje">
             {% if mensaje %}
             {{ mensaje }}
             {% endif %}
         </div>
+
+        <br>
+        <a href="{% url 'crud' %}"> Volver </a>
    </div>
 </body>
 </html>

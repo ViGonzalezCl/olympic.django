@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .models import Producto, Categoria
+from .forms import ProductoForm
 
 # Create your views here.
 def index(request):
@@ -50,30 +51,26 @@ def crud(request):
     return render(request, 'myapp/productos_list.html', context)
 
 def productosAdd(request):
-    if request.method != "POST":
-        categorias = Categoria.objects.all()
-        context ={'categorias':categorias}
-        return render(request, 'myapp/productos_add.html', context)
-    
-    else:
-        nombre_producto=request.POST["nombre_producto"]
-        precio=request.POST["precio"]
-        descripcion=request.POST["descripcion"]
-        imagen=request.POST["imagen"]
-        categoria=request.POST["categoria"]
 
-        objCategoria=Categoria.objects.get(id_categoria = categoria)
-        obj=Producto.objects.create(    nombre_producto=nombre_producto,
-                                        precio=precio,
-                                        descripcion=descripcion,
-                                        url_imagen=imagen,
-                                        id_categoria=objCategoria
-                                    )
-        obj.save()
-        categorias = Categoria.objects.all()
-        context={'mensaje': "Datos agregados exitosamente",'categorias':categorias}
+    context={}
+
+    if request.method == "POST":
+        print("controlador es un post...")
+        form = ProductoForm(request.POST)
+        if form.is_valid:
+            print("estoy en agregar, is_valid")
+        form.save()
+
+        #limpiar form
+        form=ProductoForm()
+
+        context={'mensaje': "OK, datos grabados...","form":form}
         return render(request, 'myapp/productos_add.html', context)
-    
+    else:
+        form = ProductoForm()
+        context={'form':form}
+        return render(request, 'myapp/productos_add.html', context)
+
 def productos_del(request,pk):
     context={}
     try:
