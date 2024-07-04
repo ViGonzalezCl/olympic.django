@@ -5,12 +5,6 @@ from .models import Producto, Categoria
 # Create your views here.
 def index(request):
     return render(request, 'myapp/index.html')
-#def catalogofutbol(request):
-    #return render(request, 'myapp/catalogofutbol.html')
-#def catalogogym(request):
-    #return render(request, 'myapp/catalogogym.html')
-#def catalogotennis(request):
-    #return render(request, 'myapp/catalogotennis.html')
 def contacto(request):
     return render(request, 'myapp/contacto.html')
 def crearCuenta(request):
