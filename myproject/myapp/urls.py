@@ -12,4 +12,13 @@ urlpatterns = [
     path('nosotros/', views.nosotros, name='nosotros'),
     path('sucursales/', views.sucursales, name='sucursales'),
     #path('carro', views.carro, name="carro"),
+ 
+    ##CRUD
+
+    path('crud', views.crud, name='crud'),
+    path('productosAdd', views.productosAdd, name='productosAdd'),
+    path('productos_del/<int:pk>', views.productos_del, name='productos_del'),   
+    path('productos_findEdit/<int:pk>', views.productos_findEdit, name='productos_findEdit'),
+    path('productosUpdate', views.productosUpdate, name='productosUpdate'),
+
     ]
