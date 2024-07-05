@@ -11,6 +11,7 @@ urlpatterns = [
     path('futbol/', views.futbol, name='futbol'),
     path('nosotros/', views.nosotros, name='nosotros'),
     path('sucursales/', views.sucursales, name='sucursales'),
+
     #path('carro', views.carro, name="carro"),
  
     ##CRUD

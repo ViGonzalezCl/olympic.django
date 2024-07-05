@@ -7,54 +7,97 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Editar datos de Productos</h1><br>
+    <div class="container">
+        <h1>Editar datos de Productos</h1>
 
-    <button type="button">
-        <a href="{% url 'productosAdd' %}">Agregar</a>
-    </button>
+        <button class="btn btn-primary mb-3">
+            <a href="{% url 'productosAdd' %}" style="color: white; text-decoration: none;">Agregar</a>
+        </button>
 
-    <hr class="my-4">
+        <hr class="my-4">
 
-    <div id="mensaje">
-        {% if mensaje %}
-        {{ mensaje }}
-        {% endif %}
+        <div id="mensaje">
+            {% if mensaje %}
+            <div class="alert alert-info" role="alert">
+                {{ mensaje }}
+            </div>
+            {% endif %}
+        </div>
+
+        <table class="table">
+            {% if productos %}
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Categoria</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Descripcion</th>
+                    <th>Eliminar</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in productos %}
+                <tr>
+                    <td>{{ x.id }}</td>
+                    <td>{{ x.categoria }}</td>
+                    <td>{{ x.nombre_producto }}</td>
+                    <td>{{ x.precio }}</td>
+                    <td>{{ x.descripcion }}</td>
+                    <td><a href="{% url 'productos_del' pk=x.id %}" class="btn btn-danger btn-sm">Eliminar</a></td>
+                    <td><a href="{% url 'productos_findEdit' pk=x.id %}" class="btn btn-primary btn-sm">Editar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            {% endif %}
+        </table>
+
+        <hr class="my-4">
+
+        <button class="btn btn-secondary">
+            <a href="{% url 'index' %}" style="color: white; text-decoration: none;">Volver</a>
+        </button>
     </div>
-
-    <table>
-        {% if productos %}
-        <tr>
-            <th>ID</th>
-            <th>Categoria</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Descripcion</th>
-            <th>Eliminar</th>
-            <th>Editar</th>
-        </tr>
-        {% for x in productos %}
-        <tr>
-            <td>{{ x.id }}</td>
-            <td>{{ x.categoria }}</td>
-            <td>{{ x.nombre_producto }}</td>
-            <td>{{ x.precio }}</td>
-            <td>{{ x.descripcion }}</td>
-            <td><a href="{% url 'productos_del' pk=x.id %}">Eliminar</a></td>
-            <td><a href="{% url 'productos_findEdit' pk=x.id %}">Editar</a></td>
-        </tr>
-        {% endfor %}
-        {% endif %}
-    </table>
-
-    <hr class="my-4">
-   
-    <button type="button">
-        <a href="{% url 'index' %}">Volver</a>
-    </button>
     
+    <!-- Scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-1i1jlM05vz5j5xy7FTS1jqI66ia/1qVXdDlViQJoqtzCBZqylG2tqzO2jK3CCWoX" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
