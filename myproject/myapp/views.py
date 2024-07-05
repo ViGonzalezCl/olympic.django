@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .models import Producto, Categoria
 from .forms import ProductoForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -20,6 +21,17 @@ def sucursales(request):
     return render(request, 'myapp/sucursales.html')
 def carro(request):
     return render(request, 'myapp/carro.html')
+
+
+"""
+###INDEX 
+@login_required
+def index(request):
+
+    request.session["usuario"]="usuario1"
+    usuario=request.session["usuario"]
+    context = {'usuario':usuario}
+    return render(request, 'myapp/index.html', context)"""
 
 
 #######LISTAR CATALOGOS
@@ -103,11 +115,11 @@ def productos_findEdit(request,pk):
         
 def productosUpdate(request):
     if request.method == "POST":
-        nombre_producto=request.POST["nombre"]
-        precio=request.POST["precio"]
-        descripcion=request.POST["descripcion"]
-        url_imagen=request.POST["imagen"]
-        categoria=request.POST["categoria"]
+        nombre_producto=request.POST['nombre']
+        precio=request.POST['precio']
+        descripcion=request.POST['descripcion']
+        url_imagen=request.POST['imagen']
+        categoria=request.POST['categoria']
         activo="1"
 
         objCategoria=Categoria.objects.get(id_categoria = categoria)
@@ -128,3 +140,4 @@ def productosUpdate(request):
         productos= Producto.objects.all()
         context={'productos':productos}
         return render(request, 'myapp/productos_list.html', context)
+    
